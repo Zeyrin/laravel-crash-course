@@ -1,11 +1,10 @@
-<x-layout>
+<x-app-layout>
     <h1 class="note-title">Edit Your Note</h1>
-    <form action="{{ route('note.edit', $note) }}" method="PUT" class="note-form">
+    <form action="{{ route('note.update', $note) }}" method="POST" class="note">
+        <textarea name="note" rows="10" class="note-body" placeholder="Enter note here">{{ $note->note }}</textarea>
         @csrf
         @method('PUT')
-        <label for="title" class="note-label">Title</label>
-        <input type="text" name="title" id="title" class="note-input" value="{{ $note->title }}" required>
-        <label for="note" class="note-label">Note</label>
-
-        <a href="{{ route('note.index') }}" class="note-cancel-button">Cancel </a>
-</x-layout>
+        <a href="{{ route('note.index') }}" class="note-cancel-button">Cancel</a>
+        <button class="note-submit-button">Submit</button>
+    </form>
+</x-app-layout>
